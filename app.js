@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
@@ -9,7 +10,10 @@ const businessRoutes = require('./routes/business');
 const bikeTypesRoutes = require('./routes/bikeTypes');
 const bikeIdentificationsRoutes = require('./routes/bikeIdentifications');
 
+
 const app = express();
+app.use(bodyParser.json());
+
 //import routes
 app.use('/business', businessRoutes);
 app.use('/bikeTypes', bikeTypesRoutes);

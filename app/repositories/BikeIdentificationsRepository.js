@@ -10,12 +10,12 @@ class BikeIdentificationsRepository {
         return await BikeIdentification.query().findById(id);
     }
 
-    static async create(BikeIdentificationsRepository) {
-        return await BikeIdentification.query().insert(BikeIdentificationsRepository);
+    static async create(bikeIdentification) {
+        return await BikeIdentification.query().insert(bikeIdentification);
     }
 
-    static async update(id, BikeIdentificationsRepository) {
-        return await BikeIdentification.query().patchAndFetchById(id, BikeIdentificationsRepository);
+    static async update(id, bikeIdentification) {
+        return await BikeIdentification.query().patchAndFetchById(id, bikeIdentification);
     }
 
     static async delete(id) {
