@@ -15,6 +15,19 @@ class BikeType extends Model {
             }     
         };
     }
+    static get relationMappings() {
+        const BikeModel = require('./BikeModel');
+        return {
+            bikeModels: {
+                relation: Model.HasManyRelation,
+                modelClass: BikeModel,
+                join: {
+                    from: 'bike_types.id',
+                    to: 'bike_models.bike_type_id'
+                }
+            }
+        }
+    }
 }
 
 module.exports = BikeType;

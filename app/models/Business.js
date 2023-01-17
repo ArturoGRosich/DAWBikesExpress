@@ -15,6 +15,19 @@ class Business extends Model {
             }
         };
     }
+    static get relationMappings() {
+        const BikeIdentification = require('./BikeIdentification');
+        return {
+            bikeIdentifications: {
+                relation: Model.HasManyRelation,
+                modelClass: BikeIdentification,
+                join: {
+                    from: 'business.id',
+                    to: 'bike_identifications.business_id'
+                }
+            }
+        }
+    }
 }
 
 module.exports = Business;
