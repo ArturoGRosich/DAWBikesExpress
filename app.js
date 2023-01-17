@@ -6,10 +6,12 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const businessRoutes = require('./routes/business');
+const bikeTypesRoutes = require('./routes/bikeTypes');
 
 const app = express();
-
+//import routes
 app.use('/business', businessRoutes);
+app.use('/bikeTypes', bikeTypesRoutes);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
