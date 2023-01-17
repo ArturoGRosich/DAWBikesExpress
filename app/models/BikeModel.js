@@ -29,3 +29,5 @@ class BikeModel extends Model {
         }
     }
 }
+
+module.exports = BikeModel;
