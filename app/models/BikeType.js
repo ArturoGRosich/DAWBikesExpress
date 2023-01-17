@@ -1,8 +1,8 @@
 const { Model } = require('objection');
 
-class Business extends Model {
+class BikeType extends Model {
     static get tableName() {
-        return 'business';
+        return 'bike_types';
     }
 
     static get jsonSchema() {
@@ -12,22 +12,22 @@ class Business extends Model {
             properties: {
                 id: { type: 'integer' },
                 name: { type: 'string', minLength: 1, maxLength: 255 },
-            }
+            }     
         };
     }
     static get relationMappings() {
-        const BikeIdentification = require('./BikeIdentification');
+        const BikeModel = require('./BikeModel');
         return {
-            bikeIdentifications: {
+            bikeModels: {
                 relation: Model.HasManyRelation,
-                modelClass: BikeIdentification,
+                modelClass: BikeModel,
                 join: {
-                    from: 'business.id',
-                    to: 'bike_identifications.business_id'
+                    from: 'bike_types.id',
+                    to: 'bike_models.bike_type_id'
                 }
             }
         }
     }
 }
 
-module.exports = Business;
+module.exports = BikeType;
