@@ -8,6 +8,7 @@ const businessRoutes = require('./routes/business');
 const bikeTypesRoutes = require('./routes/bikeTypes');
 const bikeIdentificationsRoutes = require('./routes/bikeIdentifications');
 const bikeModelsRoutes = require('./routes/bikeModels');
+const availabilityRoutes = require('./routes/availability');
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,6 +19,7 @@ app.use('/bikeTypes', bikeTypesRoutes);
 app.use('/bikeIdentifications', bikeIdentificationsRoutes);
 app.use('/bikeModels', bikeModelsRoutes);
 app.use('/bookings', require('./routes/bookings'));
+app.use('/availability', availabilityRoutes);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
