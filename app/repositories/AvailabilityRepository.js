@@ -16,6 +16,11 @@ class AvailabilityRepository {
                         this.where('bookings.start', '>=', from)
                             .andWhere('bookings.finish', '<=', to);
                     });
+            })
+            .groupBy('bike_models.id')
+            .withGraphFetched({
+                bikeType: true,
+                bikeIdentifications: true
             });
         
         if (bikeTypeId) {
