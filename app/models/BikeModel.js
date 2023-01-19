@@ -17,6 +17,7 @@ class BikeModel extends Model {
     }
     static get relationMappings() {
         const BikeType = require('./BikeType');
+        const BikeIdentification = require('./BikeIdentification');
         return {
             bikeType: {
                 relation: Model.HasOneRelation,
@@ -24,6 +25,14 @@ class BikeModel extends Model {
                 join: {
                     from: 'bike_models.bike_type_id',
                     to: 'bike_types.id'
+                }
+            },
+            bikeIdentifications: {
+                relation: Model.HasManyRelation,
+                modelClass: BikeIdentification,
+                join: {
+                    from: 'bike_models.id',
+                    to: 'bike_identifications.bike_model_id'
                 }
             }
         }
