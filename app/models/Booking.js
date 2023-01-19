@@ -11,7 +11,8 @@ class Booking extends Model {
             required: ['name'],
             properties: {
                 id: { type: 'integer' },
-                name: { type: 'string', minLength: 1, maxLength: 255 },
+                start: { type: 'date' },
+                finish: { type: 'date' },
             }
         };
     }
@@ -22,8 +23,8 @@ class Booking extends Model {
                 relation: Model.BelongsToOneRelation,
                 modelClass: BikeIdentification,
                 join: {
-                    from: 'booking.bike_identification_id',
-                    to: 'bike_identification.id'
+                    from: 'bookings.bike_identification_id',
+                    to: 'bike_identifications.id'
                 }
             }
         }

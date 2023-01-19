@@ -19,7 +19,7 @@ class BikeModel extends Model {
         const BikeType = require('./BikeType');
         return {
             bikeType: {
-                relation: Model.BelongsToOneRelation,
+                relation: Model.HasOneRelation,
                 modelClass: BikeType,
                 join: {
                     from: 'bike_models.bike_type_id',
