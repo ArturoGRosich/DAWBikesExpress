@@ -3,6 +3,6 @@ const router = express.Router();
 const AvailabilityController = require('../app/controllers/AvailabilityController');
 
 
-router.get('/', AvailabilityController.getAll);
+router.get('/from/:from/to/:to', AvailabilityController.getAll);
 
 module.exports = router;

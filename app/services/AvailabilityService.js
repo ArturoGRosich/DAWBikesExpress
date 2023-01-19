@@ -1,9 +1,9 @@
 const AvailabilityRepository = require('../repositories/AvailabilityRepository');
 
 class AvailabilityService {
-    static async getAll(queryParams) {
+    static async getAll(from, to, bikeTypeId) {
         try {
-            return await AvailabilityRepository.getAll();
+            return await AvailabilityRepository.getAll(from, to, bikeTypeId);
         } catch (error) {
             throw error;
         }
