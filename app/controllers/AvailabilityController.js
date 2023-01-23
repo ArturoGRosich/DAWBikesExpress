@@ -3,7 +3,7 @@ const AvailabilityService = require('../services/AvailabilityService');
 class AvailabilityController {
     static async getAll(req, res) {
 
-        const bikeTypeId = req.query['bike-type-id'] ?? null;
+        const bikeTypeId = req.query ? req.query['bike-type-id'] : null;
         const from = req.params.from;
         const to = req.params.to;
 
