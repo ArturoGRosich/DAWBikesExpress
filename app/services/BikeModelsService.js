@@ -1,9 +1,9 @@
 const BikeModelsRepository = require('../repositories/BikeModelsRepository');
 
 class BikeModelsService {
-    static async getAll() {
+    static async getAll(bikeType) {
         try {
-            return await BikeModelsRepository.getAll();
+            return await BikeModelsRepository.getAll(bikeType);
         } catch (error) {
             throw error;
         }
