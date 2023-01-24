@@ -4,5 +4,6 @@ const AvailabilityController = require('../app/controllers/AvailabilityControlle
 
 
 router.get('/from/:from/to/:to', AvailabilityController.getAll);
+router.get('/model/:id/from/:from/to/:to', AvailabilityController.findById);
 
 module.exports = router;
