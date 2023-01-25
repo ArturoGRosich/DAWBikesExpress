@@ -4,8 +4,8 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable("bike_types", table => {
-      table.increments("id").primary();
-      table.string("name").notNullable();
+        table.increments("id").primary();
+        table.string("name").notNullable();
     });
 };
 
