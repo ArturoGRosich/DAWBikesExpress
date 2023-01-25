@@ -18,7 +18,7 @@ app.use('/business', businessRoutes);
 app.use('/bikeTypes', bikeTypesRoutes);
 app.use('/bikeIdentifications', bikeIdentificationsRoutes);
 app.use('/bikeModels', bikeModelsRoutes);
-app.use('/bookings', require('./routes/bookings'));
+app.use('/', require('./routes/bookings'));
 app.use('/availability', availabilityRoutes);
 
 // view engine setup

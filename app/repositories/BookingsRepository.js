@@ -10,8 +10,16 @@ class BookingsRepository {
         return await Booking.query().findById(id);
     }
 
-    static async create(Booking) {
-        return await Booking.query().insert(Booking);
+    static async create(identificationId, startDate, endDate) {
+        console.log(startDate);
+        
+        return await Booking.query().insert(
+            {
+                bike_identification_id: identificationId,
+                start: startDate,
+                finish: endDate
+            }
+        );
     }
 
     static async update(id, Booking) {

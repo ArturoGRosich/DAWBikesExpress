@@ -11,7 +11,8 @@ class AvailabilityService {
 
     static async findById(id, from, to) {
         try {
-            return await AvailabilityRepository.findById(id, from, to);
+            const availiability = await AvailabilityRepository.findById(id, from, to);
+            return availiability ? availiability[0] : [];
         } catch (error) {
             throw error;
         }
