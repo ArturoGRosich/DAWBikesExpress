@@ -8,7 +8,7 @@ class BikeModel extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['name'],
+            required: ['name', 'bike_type_id'],
             properties: {
                 id: { type: 'integer' },
                 name: { type: 'string', minLength: 1, maxLength: 255 },

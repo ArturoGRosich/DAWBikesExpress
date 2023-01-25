@@ -8,11 +8,12 @@ class Booking extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['name'],
+            required: ['start', 'finish', 'bike_identification_id'],
             properties: {
                 id: { type: 'integer' },
                 start: { type: 'string' },
                 finish: { type: 'string' },
+                bike_identification_id: { type: 'integer' }
             }
         };
     }
