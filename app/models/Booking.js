@@ -11,8 +11,8 @@ class Booking extends Model {
             required: ['name'],
             properties: {
                 id: { type: 'integer' },
-                start: { type: 'date' },
-                finish: { type: 'date' },
+                start: { type: 'string' },
+                finish: { type: 'string' },
             }
         };
     }
