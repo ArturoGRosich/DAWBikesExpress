@@ -21,6 +21,17 @@ class AvailabilityRepository {
             .withGraphFetched({
                 bikeType: true,
                 bikeIdentifications: true
+            })
+            .modifyGraph('bikeIdentifications', builder => {
+                builder.whereNotExists(function() {
+                    this.select('*')
+                        .from('bookings')
+                        .whereRaw('bike_identifications.id = bookings.bike_identification_id')
+                        .andWhere(function() {
+                            this.where('bookings.start', '>=', from)
+                                .andWhere('bookings.finish', '<=', to);
+                        });
+                });
             });
 
         if (bikeTypeId) {
@@ -49,7 +60,19 @@ class AvailabilityRepository {
             .withGraphFetched({
                 bikeType: true,
                 bikeIdentifications: true
+            })
+            .modifyGraph('bikeIdentifications', builder => {
+                builder.whereNotExists(function() {
+                    this.select('*')
+                        .from('bookings')
+                        .whereRaw('bike_identifications.id = bookings.bike_identification_id')
+                        .andWhere(function() {
+                            this.where('bookings.start', '>=', from)
+                                .andWhere('bookings.finish', '<=', to);
+                        });
+                });
             });
+            
         
         return await query;
     }

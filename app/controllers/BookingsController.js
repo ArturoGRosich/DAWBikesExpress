@@ -22,8 +22,8 @@ class BookingsController {
 
     static async create(req, res) {
         try {
-            const Bookings = req.body;
-            const createdBookings = await BookingsService.create(Bookings);
+            const { bikeModelId, startDate, endDate } = req.params;
+            const createdBookings = await BookingsService.create(bikeModelId, startDate, endDate);
             res.status(201).json(createdBookings);
         } catch (error) {
             res.status(500).json({ message: error.message });

@@ -2,8 +2,13 @@ const BikeModel = require('../models/BikeModel');
 require('../../db/config');
 
 class BikeModelsRepository {
-    static async getAll() {
-        return await BikeModel.query();
+    static async getAll(bikeType) {
+        var query = BikeModel.query();
+        if (bikeType) {
+            query = query.where('bike_type_id', bikeType);
+        }
+        return await query;
+
     }
 
     static async getById(id) {

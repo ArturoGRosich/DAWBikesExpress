@@ -9,7 +9,7 @@ class BikeIdentification extends Model {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: [],
+            required: ['business_id', 'bike_model_id'],
             properties: {
                 id: { type: 'integer' }, 
                 business_id: { type: 'integer' },

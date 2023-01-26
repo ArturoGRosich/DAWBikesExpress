@@ -3,7 +3,8 @@ const BikeModelsService = require('../services/BikeModelsService');
 class BikeModelsController {
     static async getAll(req, res) {
         try {
-            const bikeModels = await BikeModelsService.getAll();
+            const bikeType = req.query.bikeType;
+            const bikeModels = await BikeModelsService.getAll(bikeType);
             res.status(200).json(bikeModels);
         } catch (error) {
             res.status(500).json({ message: error.message });
