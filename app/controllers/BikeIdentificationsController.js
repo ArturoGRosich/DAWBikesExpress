@@ -3,7 +3,8 @@ const BikeIdentificationsService = require('../services/BikeIdentificationsServi
 class BikeIdentificationsController {
     static async getAll(req, res) {
         try {
-            const bikeIdentifications = await BikeIdentificationsService.getAll();
+            const { shopId } = req.query;  
+            const bikeIdentifications = await BikeIdentificationsService.getAll(shopId);
             res.status(200).json(bikeIdentifications);
         } catch (error) {
             res.status(500).json({ message: error.message });

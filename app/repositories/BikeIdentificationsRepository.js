@@ -2,8 +2,12 @@ const BikeIdentification = require('../models/BikeIdentification');
 require('../../db/config');
 
 class BikeIdentificationsRepository {
-    static async getAll() {
-        return await BikeIdentification.query();
+    static async getAll(businessId) {
+        const query =  BikeIdentification.query();
+        if (businessId) {
+            query.where('business_id', businessId);
+        }
+        return await query;
     }
 
     static async getById(id) {

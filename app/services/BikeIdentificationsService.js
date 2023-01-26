@@ -1,9 +1,9 @@
 const BikeIdentificationsRepository = require('../repositories/BikeIdentificationsRepository');
 
 class BikeIdentificationsService {
-    static async getAll() {
+    static async getAll(businessId) {
         try {
-            return await BikeIdentificationsRepository.getAll();
+            return await BikeIdentificationsRepository.getAll(businessId);
         } catch (error) {
             throw error;
         }
