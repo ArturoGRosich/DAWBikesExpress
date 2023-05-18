@@ -72,8 +72,9 @@
           </form>
         </div>
       </div>
-      <div class="featured">
-        
+      <div class="loaded_bikes">
+        <h1 class="loaded_bikes_title"> </h1>
+        <div class="loaded_bikes_content"></div>
       </div>
     </main>
     <footer class="bg-dark text-light py-3">
@@ -142,16 +143,15 @@
         },
       })
         .then((response) => response.json())
-        // create card deck each 3 bikes and append to featured
+        // create card deck each 3 bikes and append to loaded_bikes
         .then((data) => {
-          let featured = document.querySelector(".featured");
-          featured.innerHTML = "<h1>Featured bikes</h1>";
+          let loaded_bikes_content = document.querySelector(".loaded_bikes_content");
+          loaded_bikes_content.innerHTML = "";
 
-          featured
-          //attach card deck to featured each 3 bikes
+          //attach card deck to loaded_bikes each 3 bikes
           for (let i = 0; i < data.length; i++) {
             if (i % 3 == 0) {
-              featured.innerHTML += cardDeckTemplate;
+              loaded_bikes_content.innerHTML += cardDeckTemplate;
             }
             //create card
             let cardHtml = cardTemplate.replace("{{ Title }}", data[i].name);
@@ -164,6 +164,8 @@
     }
 
     loadBikes(new Date().toISOString().slice(0, 10), new Date().toISOString().slice(0, 10));
+    loaded_bikes_title = document.querySelector(".loaded_bikes_title");
+    loaded_bikes_title.innerHTML = "Featured bikes";
 
     let cardDeckTemplate = `<div class="card-deck p-0 m-4"> </div>`;
     let cardTemplate = 
@@ -180,6 +182,24 @@
     document
       .getElementById("search-form")
       .addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        let start = document.getElementById("start-date").value;
+        let end = document.getElementById("end-date").value;
+        loadBikes(start, end);
+
+        // reduce height of search section
+        let searchSection = document.querySelector(".search-section");
+        searchSection.style.height = "200px";
+        // erase serach section h1 element not the text inside it
+        searchSection.removeChild(searchSection.childNodes[1]);
+        // add margin top to search form
+        let searchBar = document.querySelector(".search-bar");
+        searchBar.style.paddingTop = "50px";
+        // change title of loaded bikes 
+        loaded_bikes_title.innerHTML = "Your search results"
+
+
         
       });
   </script>
@@ -207,11 +227,11 @@
       padding-top: 350px;
     }
 
-    .featured h1 {
+    .loaded_bikes h1 {
       font-size: 50px;
       font-weight: 700;
       text-align: center;
-      padding-top: 50px;
+      padding-top: 40px;
     }
 
     .card-body > p {
