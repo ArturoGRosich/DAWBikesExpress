@@ -21,6 +21,7 @@ app.use('/bikeModels', bikeModelsRoutes);
 app.use('/', require('./routes/bookings'));
 app.use('/availability', availabilityRoutes);
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -28,7 +29,8 @@ app.set('view engine', 'hbs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+//return index
+app.use('/', require('./routes/index'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

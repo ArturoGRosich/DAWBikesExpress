@@ -23,7 +23,23 @@ exports.seed = function(knex) {
           business_id: 2
         },
         {
-          bike_model_id: 3,
+          bike_model_id: 5,
+          business_id: 2
+        },
+        {
+          bike_model_id: 5,
+          business_id: 2
+        },
+        {
+          bike_model_id: 5,
+          business_id: 2
+        },
+        {
+          bike_model_id: 5,
+          business_id: 2
+        },
+        {
+          bike_model_id: 5,
           business_id: 2
         }
       ]);
